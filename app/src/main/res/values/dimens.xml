@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="channel_item_space">20dp</dimen>
+    <dimen name="channel_item_width">120dp</dimen>
+    <dimen name="channel_item_height">120dp</dimen>
+</resources>
