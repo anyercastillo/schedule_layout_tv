@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment"
-    tools:deviceIds="tv">
+    tools:context=".ui.ScheduleView">
 
-    <com.paramount.ui.ScheduleView
-        android:id="@+id/schedule"
-        android:layout_width="match_parent"
+    <com.paramount.ui.ChannelListView
+        android:id="@+id/channels"
+        android:layout_width="@dimen/channel_item_width"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginStart="@dimen/channel_item_width"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
