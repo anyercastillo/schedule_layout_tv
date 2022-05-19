@@ -5,7 +5,9 @@ import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import android.widget.TextView
 import com.paramount.R
+import com.paramount.ui.models.Channel
 
 private val HORIZONTAL_KEY_EVENTS = listOf(
     KeyEvent.KEYCODE_DPAD_LEFT,
@@ -20,6 +22,9 @@ private val VERTICAL_KEY_EVENTS = listOf(
 class ScheduleView(ctx: Context, attrs: AttributeSet) : FrameLayout(ctx, attrs) {
     private val channels: ChannelListView
     private val listings: ListingListView
+    private val channelText: TextView
+    private val listingText: TextView
+
     private var lastChannelIndexSelected: Int = 0
     private var lastListingIndexSelected: Int = 0
 
@@ -27,17 +32,33 @@ class ScheduleView(ctx: Context, attrs: AttributeSet) : FrameLayout(ctx, attrs) 
         LayoutInflater.from(ctx).inflate(R.layout.view_schedule, this, true)
         channels = findViewById(R.id.channels)
         listings = findViewById(R.id.listings)
+        channelText = findViewById(R.id.schedule_selected_box_channel)
+        listingText = findViewById(R.id.schedule_selected_box_listing)
 
         isFocusable = true
         isFocusableInTouchMode = true
 
-        channels.setOnChildSelectedListener { parent, view, position, id ->
+        channels.setOnChildSelectedListener { _, _, position, _ ->
             lastChannelIndexSelected = position
+
+            updateSelectedView()
         }
 
-        listings.setOnChildSelectedListener { parent, view, position, id ->
+        listings.setOnChildSelectedListener { _, _, position, _ ->
             lastListingIndexSelected = position
+
+            updateSelectedView()
         }
+    }
+
+    private fun updateSelectedView() {
+        val channelsAdapter = channels.adapter as ChannelsAdapter
+        val listingsAdapter = listings.adapter as ListingsAdapter
+        val channelItem = channelsAdapter.currentList[lastChannelIndexSelected] ?: return
+        val listingItem = listingsAdapter.currentList[lastListingIndexSelected] ?: return
+
+        channelText.text = channelItem.title
+        listingText.text = listingItem.title
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
