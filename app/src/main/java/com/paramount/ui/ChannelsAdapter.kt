@@ -1,4 +1,4 @@
-package com.paramount
+package com.paramount.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.paramount.R
 import com.paramount.ui.models.Channel
 
 private object ChannelDiffCallback : DiffUtil.ItemCallback<Channel>() {

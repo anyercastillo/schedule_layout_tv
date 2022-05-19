@@ -3,23 +3,23 @@ package com.paramount.ui
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import androidx.leanback.widget.HorizontalGridView
 import androidx.leanback.widget.OnChildViewHolderSelectedListener
-import androidx.leanback.widget.VerticalGridView
 import androidx.recyclerview.widget.RecyclerView
 import com.paramount.R
 
-class ChannelListView(ctx: Context, attrs: AttributeSet) : VerticalGridView(ctx, attrs) {
-    private val channelItemSpacing = resources.getDimensionPixelSize(R.dimen.channel_item_space)
-    private val channelItemHeight = resources.getDimensionPixelSize(R.dimen.channel_item_height)
+class ListingListView(ctx: Context, attrs: AttributeSet) : HorizontalGridView(ctx, attrs) {
+    private val listingItemSpacing = resources.getDimensionPixelSize(R.dimen.listing_item_space)
+    private val listingItemWidth = resources.getDimensionPixelSize(R.dimen.listing_item_width)
 
     init {
         windowAlignment = WINDOW_ALIGN_LOW_EDGE
-        windowAlignmentOffset = channelItemHeight
+        windowAlignmentOffset = listingItemWidth
         windowAlignmentOffsetPercent = 0f
         itemAlignmentOffset = 0
         itemAlignmentOffsetPercent = 0f
         isWindowAlignmentPreferKeyLineOverLowEdge = false
-        setItemSpacing(channelItemSpacing)
+        setItemSpacing(listingItemSpacing)
 
         setOnChildViewHolderSelectedListener(object : OnChildViewHolderSelectedListener() {
             override fun onChildViewHolderSelected(
@@ -45,11 +45,11 @@ class ChannelListView(ctx: Context, attrs: AttributeSet) : VerticalGridView(ctx,
         updateViewTopMargin(viewHolder.itemView, windowAlignmentOffset)
     }
 
-    private fun updateViewTopMargin(view: View, topMarginValue: Int) {
+    private fun updateViewTopMargin(view: View, leftMarginValue: Int) {
         val lp = view.layoutParams as MarginLayoutParams
 
         view.layoutParams = lp.apply {
-            topMargin = topMarginValue
+            leftMargin = leftMarginValue
         }
     }
 }

@@ -3,4 +3,8 @@
     <dimen name="channel_item_space">20dp</dimen>
     <dimen name="channel_item_width">120dp</dimen>
     <dimen name="channel_item_height">120dp</dimen>
+
+    <dimen name="listing_item_space">20dp</dimen>
+    <dimen name="listing_item_width">120dp</dimen>
+    <dimen name="listing_item_height">120dp</dimen>
 </resources>

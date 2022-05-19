@@ -11,6 +11,15 @@
         android:layout_width="@dimen/channel_item_width"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/channel_item_width"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.paramount.ui.ListingListView
+        android:id="@+id/listings"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/listing_item_height"
+        android:layout_marginTop="@dimen/listing_item_height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,18 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/channel_item_width"
-    android:layout_height="@dimen/channel_item_height"
-    android:background="#ff0000">
+    android:layout_width="@dimen/listing_item_width"
+    android:layout_height="@dimen/listing_item_height"
+    android:background="#0000ff">
 
     <TextView
-        android:id="@+id/channel_item_title"
+        android:id="@+id/listing_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Channel Item" />
+        tools:text="Listing Item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
