@@ -10,11 +10,13 @@ import com.paramount.R
 
 class ListingListView(ctx: Context, attrs: AttributeSet) : HorizontalGridView(ctx, attrs) {
     private val listingItemSpacing = resources.getDimensionPixelSize(R.dimen.listing_item_space)
-    private val listingItemWidth = resources.getDimensionPixelSize(R.dimen.listing_item_width)
+    private val listingsItemWidth = resources.getDimensionPixelSize(R.dimen.listing_item_width)
+    private val boxWidth = resources.getDimensionPixelSize(R.dimen.schedule_selected_item_width)
+    private val gap = boxWidth - listingsItemWidth
 
     init {
         windowAlignment = WINDOW_ALIGN_LOW_EDGE
-        windowAlignmentOffset = listingItemWidth
+        windowAlignmentOffset = gap
         windowAlignmentOffsetPercent = 0f
         itemAlignmentOffset = 0
         itemAlignmentOffsetPercent = 0f

@@ -9,16 +9,25 @@
     <com.paramount.ui.ChannelListView
         android:id="@+id/channels"
         android:layout_width="@dimen/channel_item_width"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/channel_item_width"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <com.paramount.ui.ListingListView
         android:id="@+id/listings"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="@dimen/listing_item_height"
-        android:layout_marginTop="@dimen/listing_item_height"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="@dimen/schedule_selected_item_width"
+        android:layout_height="@dimen/schedule_selected_item_height"
+        android:layout_marginStart="@dimen/listing_item_width"
+        android:layout_marginTop="@dimen/channel_item_height"
+        android:background="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

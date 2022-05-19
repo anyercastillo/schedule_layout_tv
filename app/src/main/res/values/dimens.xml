@@ -7,4 +7,7 @@
     <dimen name="listing_item_space">20dp</dimen>
     <dimen name="listing_item_width">120dp</dimen>
     <dimen name="listing_item_height">120dp</dimen>
+
+    <dimen name="schedule_selected_item_width">300dp</dimen>
+    <dimen name="schedule_selected_item_height">200dp</dimen>
 </resources>

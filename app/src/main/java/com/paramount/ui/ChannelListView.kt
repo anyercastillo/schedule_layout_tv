@@ -11,10 +11,12 @@ import com.paramount.R
 class ChannelListView(ctx: Context, attrs: AttributeSet) : VerticalGridView(ctx, attrs) {
     private val channelItemSpacing = resources.getDimensionPixelSize(R.dimen.channel_item_space)
     private val channelItemHeight = resources.getDimensionPixelSize(R.dimen.channel_item_height)
+    private val boxHeight = resources.getDimensionPixelSize(R.dimen.schedule_selected_item_height)
+    private val gap = boxHeight - channelItemHeight
 
     init {
         windowAlignment = WINDOW_ALIGN_LOW_EDGE
-        windowAlignmentOffset = channelItemHeight
+        windowAlignmentOffset = gap
         windowAlignmentOffsetPercent = 0f
         itemAlignmentOffset = 0
         itemAlignmentOffsetPercent = 0f
