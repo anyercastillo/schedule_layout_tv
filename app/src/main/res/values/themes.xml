@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.Exploration" parent="@style/Theme.Leanback" />
+</resources>
