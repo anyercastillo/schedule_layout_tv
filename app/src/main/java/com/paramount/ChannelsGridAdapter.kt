@@ -1,4 +1,4 @@
-package com.paramount.ui
+package com.paramount
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.paramount.R
-import com.paramount.ui.models.Channel
+import com.paramount.models.Channel
 
 private object ChannelDiffCallback : DiffUtil.ItemCallback<Channel>() {
     override fun areItemsTheSame(oldItem: Channel, newItem: Channel): Boolean {
@@ -28,7 +27,7 @@ class ChannelViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 }
 
-class ChannelsAdapter : ListAdapter<Channel, ChannelViewHolder>(ChannelDiffCallback) {
+class ChannelsGridAdapter : ListAdapter<Channel, ChannelViewHolder>(ChannelDiffCallback) {
     private var recyclerView: RecyclerView? = null
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

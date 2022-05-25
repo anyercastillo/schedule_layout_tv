@@ -1,31 +1,30 @@
 package com.paramount
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.paramount.ui.ChannelsAdapter
-import com.paramount.ui.ListingsAdapter
-import com.paramount.ui.ScheduleView
-import com.paramount.ui.models.Channel
-import com.paramount.ui.models.Listing
+import androidx.leanback.widget.VerticalGridView
+import com.paramount.models.Channel
+
 
 class MainFragment : Fragment(R.layout.fragment_main) {
+    private val channelsGridAdapter = ChannelsGridAdapter()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val channelsAdapter = ChannelsAdapter()
-        val listingsAdapter = ListingsAdapter()
+        val channelsGrid = view.findViewById<VerticalGridView>(R.id.channels_grid)
+        channelsGrid.adapter = channelsGridAdapter
 
-        val scheduleView = view.findViewById<ScheduleView>(R.id.schedule)
-        scheduleView.setChannelsAdapter(channelsAdapter)
-        scheduleView.setListingsAdapter(listingsAdapter)
+        loadData()
+    }
 
-        channelsAdapter.submitList(
-            (1..20).map { Channel("Channel: $it") }
-        )
-
-        listingsAdapter.submitList(
-            (1..20).map { Listing("Listing: $it") }
-        )
+    private fun loadData() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            val channels = (0..10).map { Channel("Channel $it") }
+            channelsGridAdapter.submitList(channels)
+        }, 1000)
     }
 }
