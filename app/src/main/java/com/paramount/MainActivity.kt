@@ -2,9 +2,10 @@ package com.paramount
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import com.paramount.ui.ScheduleFragment
 
 /**
- * Loads [MainFragment].
+ * Loads [ScheduleFragment].
  */
 class MainActivity : FragmentActivity() {
 
@@ -13,7 +14,7 @@ class MainActivity : FragmentActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.main_fragment, MainFragment())
+                .replace(R.id.main_fragment, ScheduleFragment())
                 .commitNow()
         }
     }

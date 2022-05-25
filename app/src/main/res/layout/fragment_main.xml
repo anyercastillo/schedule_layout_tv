@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment"
+    tools:context=".ui.ScheduleFragment"
     tools:deviceIds="tv">
 
-    <View
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/box"
         android:layout_width="@dimen/box_width"
         android:layout_height="@dimen/box_height"
@@ -15,9 +15,17 @@
         android:layout_marginTop="@dimen/box_margin_top"
         android:background="#1AFFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.leanback.widget.VerticalGridView
+        <TextView
+            android:id="@+id/box_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.paramount.ui.ChannelVerticalGridView
         android:id="@+id/channels_grid"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
