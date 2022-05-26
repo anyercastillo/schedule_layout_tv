@@ -14,6 +14,8 @@
         android:layout_marginStart="@dimen/box_margin_start"
         android:layout_marginTop="@dimen/box_margin_top"
         android:background="#1AFFFFFF"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,9 +25,19 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/box_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_channel" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
+        android:id="@+id/include_channel_item"
         layout="@layout/channel_item"
         android:layout_width="0dp"
         android:layout_height="@dimen/channel_item_height"
@@ -42,4 +54,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/box"
         app:layout_constraintTop_toBottomOf="@+id/box" />
+
+    <com.paramount.ui.views.ListingHorizontalGridView
+        android:id="@+id/listings_grid"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/listing_item_height"
+        app:layout_constraintStart_toEndOf="@+id/box"
+        app:layout_constraintTop_toTopOf="@+id/box" />
+
+    <include
+        android:id="@+id/include_listing_item"
+        layout="@layout/listing_item"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/channel_item_height"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        app:layout_constraintEnd_toStartOf="@+id/box"
+        app:layout_constraintTop_toBottomOf="@+id/include_channel_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
