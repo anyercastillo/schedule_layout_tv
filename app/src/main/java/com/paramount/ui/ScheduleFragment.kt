@@ -40,7 +40,7 @@ class ScheduleFragment : Fragment(R.layout.fragment_main) {
     private fun setupChannelsGrid() = channelsGrid.apply {
         setOnChildSelectedListener { _, _, position, _ ->
             val channel =
-                channelsGridAdapter.getChannelAt(position) ?: return@setOnChildSelectedListener
+                channelsGridAdapter.getItemAtPosition(position) ?: return@setOnChildSelectedListener
             viewModel.onEvent(ScheduleEvent.ChannelSelected(channel))
         }
         adapter = channelsGridAdapter
