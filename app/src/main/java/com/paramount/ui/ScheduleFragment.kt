@@ -8,10 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.paramount.ChannelsGridAdapter
 import com.paramount.R
 import com.paramount.ui.models.ScheduleEvent
 import com.paramount.ui.models.ScheduleState
+import com.paramount.ui.views.ChannelVerticalGridView
+import com.paramount.ui.views.ChannelsGridAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

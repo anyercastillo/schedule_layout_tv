@@ -1,12 +1,13 @@
 package com.paramount.ui
 
 import androidx.lifecycle.ViewModel
+import com.paramount.domain.models.Channel
 import com.paramount.ui.models.ScheduleEvent
 import com.paramount.ui.models.ScheduleState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-val channels = (0..10).map { com.paramount.ui.models.Channel("Channel $it") }
+val channels = (0..10).map { Channel("Channel $it") }
 private val initialState = ScheduleState(
     channels = channels,
     selectedChannel = channels.first(),

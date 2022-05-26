@@ -1,11 +1,12 @@
-package com.paramount
+package com.paramount.ui.views
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
-import com.paramount.ui.models.Channel
+import com.paramount.R
+import com.paramount.domain.models.Channel
 
 private object ChannelDiffCallback : DiffUtil.ItemCallback<Channel>() {
     override fun areItemsTheSame(oldItem: Channel, newItem: Channel): Boolean {
@@ -39,11 +40,6 @@ class ChannelsGridAdapter : ScheduleGridAdapter<Channel, ChannelViewHolder>(Chan
             .inflate(R.layout.channel_item, parent, false)
 
         return ChannelViewHolder(view, viewType)
-    }
-
-    override fun onBindViewHolder(holder: ChannelViewHolder, position: Int) {
-        val channel = getItem(position)
-        holder.bind(channel)
     }
 
     override fun fakeItemPlaceHolder(): Channel = Channel(

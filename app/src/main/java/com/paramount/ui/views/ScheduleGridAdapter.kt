@@ -1,4 +1,4 @@
-package com.paramount
+package com.paramount.ui.views
 
 import android.view.View
 import androidx.recyclerview.widget.DiffUtil
@@ -13,7 +13,6 @@ abstract class ScheduleViewHolder<T>(
     view: View,
     private val viewType: Int
 ) : RecyclerView.ViewHolder(view) {
-
     fun bind(item: T) = when (viewType) {
         VIEW_TYPE_FIRST_ITEM -> bindInvisibleRow()
         VIEW_TYPE_LAST_ITEM -> bindPlaceHolder()
@@ -56,6 +55,11 @@ abstract class ScheduleGridAdapter<T, VH : ScheduleViewHolder<T>>(
         0 -> VIEW_TYPE_FIRST_ITEM
         itemCount - 1 -> VIEW_TYPE_LAST_ITEM
         else -> VIEW_TYPE_ITEM
+    }
+
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        val item = getItem(position)
+        holder.bind(item)
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.paramount.ui
+package com.paramount.ui.views
 
 import android.content.Context
 import android.util.AttributeSet

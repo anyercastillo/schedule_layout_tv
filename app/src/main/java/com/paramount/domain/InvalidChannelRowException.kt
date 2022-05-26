@@ -1,3 +1,3 @@
-package com.paramount
+package com.paramount.domain
 
 class InvalidChannelRowException : Exception()
