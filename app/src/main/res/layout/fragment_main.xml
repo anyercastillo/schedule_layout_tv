@@ -62,8 +62,8 @@
     <include
         android:id="@+id/include_listing_item"
         layout="@layout/listing_item"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/channel_item_height"
+        android:layout_width="@dimen/listing_item_width"
+        android:layout_height="@dimen/listing_item_height"
         app:layout_constraintEnd_toStartOf="@+id/box"
         app:layout_constraintTop_toBottomOf="@+id/include_channel_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
