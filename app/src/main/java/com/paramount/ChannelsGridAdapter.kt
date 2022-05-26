@@ -75,6 +75,16 @@ class ChannelsGridAdapter : ListAdapter<Channel, ChannelViewHolder>(ChannelDiffC
         holder.bind(channel)
     }
 
+    /**
+     * Submits a list to the adapter.
+     *
+     * Prepares the given [list] to be submitted to the adapter.
+     * This is the list received by the view.
+     * [ pos 0 (invisible) ]
+     * [ pos 1 ]
+     * [ pos 2 ]
+     * [-placeholder-]
+     */
     override fun submitList(list: List<Channel>?) {
         originalList = list
         val virtualList = list?.plus(fakeChannelPlaceHolder())
