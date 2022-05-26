@@ -21,7 +21,7 @@ class ScheduleFragment : Fragment(R.layout.fragment_main) {
 
     private lateinit var boxChannel: TextView
     private lateinit var channelsGrid: ChannelVerticalGridView
-
+    private lateinit var prevChannelTitle: TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,11 +34,13 @@ class ScheduleFragment : Fragment(R.layout.fragment_main) {
     private fun findViewsFromInflatedLayout(view: View) {
         boxChannel = view.findViewById(R.id.box_channel)
         channelsGrid = view.findViewById(R.id.channels_grid)
+        prevChannelTitle = view.findViewById(R.id.channel_item_title)
     }
 
     private fun setupChannelsGrid() = channelsGrid.apply {
         setOnChildSelectedListener { _, _, position, _ ->
-            val channel = channelsGridAdapter.getChannelAt(position) ?: return@setOnChildSelectedListener
+            val channel =
+                channelsGridAdapter.getChannelAt(position) ?: return@setOnChildSelectedListener
             viewModel.onEvent(ScheduleEvent.ChannelSelected(channel))
         }
         adapter = channelsGridAdapter
@@ -57,5 +59,6 @@ class ScheduleFragment : Fragment(R.layout.fragment_main) {
     private fun renderState(scheduleState: ScheduleState) {
         boxChannel.text = scheduleState.selectedChannel.title
         channelsGridAdapter.submitList(scheduleState.channels)
+        prevChannelTitle.text = scheduleState.prevChannel?.title
     }
 }

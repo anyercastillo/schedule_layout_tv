@@ -25,6 +25,16 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include
+        layout="@layout/channel_item"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/channel_item_height"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        app:layout_constraintBottom_toTopOf="@+id/box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/box" />
+
     <com.paramount.ui.ChannelVerticalGridView
         android:id="@+id/channels_grid"
         android:layout_width="wrap_content"

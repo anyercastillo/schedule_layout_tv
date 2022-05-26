@@ -9,7 +9,8 @@ import kotlinx.coroutines.flow.asStateFlow
 val channels = (0..10).map { com.paramount.ui.models.Channel("Channel $it") }
 private val initialState = ScheduleState(
     channels = channels,
-    selectedChannel = channels.first()
+    selectedChannel = channels.first(),
+    prevChannel = null,
 )
 
 class ScheduleViewModel : ViewModel() {
@@ -21,8 +22,12 @@ class ScheduleViewModel : ViewModel() {
     }
 
     private fun processEventChannelSelected(event: ScheduleEvent.ChannelSelected) {
+        val selectedIndex = channels.indexOf(event.channel)
+        val prevIndex = selectedIndex - 1
+        val prevChannel = if (prevIndex >= 0) channels[prevIndex] else null
         val newState = state.value.copy(
-            selectedChannel = event.channel
+            selectedChannel = event.channel,
+            prevChannel = prevChannel
         )
         _state.tryEmit(newState)
     }
