@@ -20,8 +20,11 @@ import kotlinx.coroutines.launch
 
 class ScheduleFragment : Fragment(R.layout.fragment_main) {
     private val viewModel by viewModels<ScheduleViewModel>()
-    private val channelsGridAdapter = ChannelsGridAdapter()
-    private val listingsGridAdapter = ListingsGridAdapter()
+    private val channelsGridAdapter = ChannelsGridAdapter(::onHorizontalKeyEvent)
+    private val listingsGridAdapter = ListingsGridAdapter(::onVerticalKeyEvent)
+
+    private var lastSelectedChannelView: View? = null
+    private var lastSelectedListingView: View? = null
 
     private lateinit var boxChannel: TextView
     private lateinit var boxListing: TextView
@@ -49,7 +52,8 @@ class ScheduleFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setupChannelsGrid() = channelsGrid.apply {
-        setOnChildSelectedListener { _, _, position, _ ->
+        setOnChildSelectedListener { _, view, position, _ ->
+            lastSelectedChannelView = view
             val channel =
                 channelsGridAdapter.getItemAtPosition(position) ?: return@setOnChildSelectedListener
             viewModel.onEvent(ScheduleEvent.ChannelSelected(channel))
@@ -58,7 +62,8 @@ class ScheduleFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setupListingsGrid() = listingsGrid.apply {
-        setOnChildSelectedListener { _, _, position, _ ->
+        setOnChildSelectedListener { _, view, position, _ ->
+            lastSelectedListingView = view
             val listing =
                 listingsGridAdapter.getItemAtPosition(position) ?: return@setOnChildSelectedListener
             viewModel.onEvent(ScheduleEvent.ListingSelected(listing))
@@ -85,5 +90,17 @@ class ScheduleFragment : Fragment(R.layout.fragment_main) {
 
         prevListingTitle.text = scheduleState.prevListing?.title
         listingsGridAdapter.submitList(scheduleState.listings)
+    }
+
+    private fun onHorizontalKeyEvent(): Boolean {
+        listingsGrid.requestFocus()
+
+        return false
+    }
+
+    private fun onVerticalKeyEvent(): Boolean {
+        channelsGrid.requestFocus()
+
+        return false
     }
 }

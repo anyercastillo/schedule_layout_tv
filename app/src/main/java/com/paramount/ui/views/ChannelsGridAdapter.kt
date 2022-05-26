@@ -1,5 +1,6 @@
 package com.paramount.ui.views
 
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,11 +34,20 @@ class ChannelViewHolder(
     }
 }
 
-class ChannelsGridAdapter : ScheduleGridAdapter<Channel, ChannelViewHolder>(ChannelDiffCallback) {
+class ChannelsGridAdapter(
+    private val onHorizontalKeyListener: () -> Boolean
+) : ScheduleGridAdapter<Channel, ChannelViewHolder>(ChannelDiffCallback) {
+    private val horizontalKeyCode = listOf(KeyEvent.KEYCODE_DPAD_RIGHT, KeyEvent.KEYCODE_DPAD_LEFT)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChannelViewHolder {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.channel_item, parent, false)
+
+        view.setOnKeyListener { _, keyCode, _ ->
+            if (keyCode in horizontalKeyCode) return@setOnKeyListener onHorizontalKeyListener()
+            return@setOnKeyListener false
+        }
 
         return ChannelViewHolder(view, viewType)
     }

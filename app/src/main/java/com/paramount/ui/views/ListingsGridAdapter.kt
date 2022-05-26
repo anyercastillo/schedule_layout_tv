@@ -1,6 +1,7 @@
 package com.paramount.ui.views
 
 import android.graphics.Color
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,11 +36,20 @@ class ListingViewHolder(
     }
 }
 
-class ListingsGridAdapter : ScheduleGridAdapter<Listing, ListingViewHolder>(ListingDiffCallback) {
+class ListingsGridAdapter(
+    private val onVerticalKeyListener: () -> Boolean
+) : ScheduleGridAdapter<Listing, ListingViewHolder>(ListingDiffCallback) {
+    private val verticalKeyCode = listOf(KeyEvent.KEYCODE_DPAD_UP, KeyEvent.KEYCODE_DPAD_DOWN)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListingViewHolder {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.listing_item, parent, false)
+
+        view.setOnKeyListener { _, keyCode, _ ->
+            if (keyCode in verticalKeyCode) return@setOnKeyListener onVerticalKeyListener()
+            return@setOnKeyListener false
+        }
 
         return ListingViewHolder(view, viewType)
     }
