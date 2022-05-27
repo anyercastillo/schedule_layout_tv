@@ -4,13 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment"
+    tools:context=".ui.ScheduleFragment"
+    android:descendantFocusability="beforeDescendants"
     tools:deviceIds="tv">
 
-    <com.paramount.ui.ScheduleView
-        android:id="@+id/schedule"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/box"
+        android:layout_width="@dimen/box_width"
+        android:layout_height="@dimen/box_height"
+        android:layout_marginStart="@dimen/box_margin_start"
+        android:layout_marginTop="@dimen/box_margin_top"
+        android:background="#1AFFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/box_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/box_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_channel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/include_channel_item"
+        layout="@layout/channel_item"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/channel_item_height"
+        app:layout_constraintBottom_toTopOf="@+id/box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/box" />
+
+    <com.paramount.ui.views.ChannelVerticalGridView
+        android:id="@+id/channels_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/box"
+        app:layout_constraintTop_toBottomOf="@+id/box" />
+
+    <com.paramount.ui.views.ListingHorizontalGridView
+        android:id="@+id/listings_grid"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/listing_item_height"
+        app:layout_constraintStart_toEndOf="@+id/box"
+        app:layout_constraintTop_toTopOf="@+id/box" />
+
+    <include
+        android:id="@+id/include_listing_item"
+        layout="@layout/listing_item"
+        android:layout_width="@dimen/listing_item_width"
+        android:layout_height="@dimen/listing_item_height"
+        app:layout_constraintEnd_toStartOf="@+id/box"
+        app:layout_constraintTop_toBottomOf="@+id/include_channel_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

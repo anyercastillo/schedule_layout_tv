@@ -1,4 +1,4 @@
-package com.paramount.ui.models
+package com.paramount.domain.models
 
 data class Listing(
     val title: String
